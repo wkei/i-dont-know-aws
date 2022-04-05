@@ -3,7 +3,7 @@ import logo from './logo.svg'
 export default function Home() {
   return (
     <main style={{ padding: '1rem 0' }}>
-      <h2>Go Home v2</h2>
+      <h2>Go Home v3</h2>
       <img
         style={{ width: '10rem' }}
         src={logo}
