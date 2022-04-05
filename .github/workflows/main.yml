@@ -74,6 +74,4 @@ jobs:
 
       - name: Create Cloudfront Invalidation
         working-directory: build
-        run: |
-          DISTRIBUTION_ID=${{ secrets.CF_DISTRIBUTION_ID }}
-          aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths /*
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} --paths "/*"
