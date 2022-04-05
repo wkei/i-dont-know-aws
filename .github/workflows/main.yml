@@ -67,5 +67,5 @@ jobs:
           role-session-name: GitHubActions
       
       - name: Deploy to S3
-        run: aws s3 sync ./build ${{ secrets.AWS_S3_BUCKET_NAME }}
+        run: aws s3 sync build s3://i-dont-know-aws
 #         working-directory: build-artifact
