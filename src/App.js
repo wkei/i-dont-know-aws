@@ -18,6 +18,8 @@ export default function App() {
       </ul>
       <hr />
       <Outlet />
+      <hr />
+      <h2>What Footer</h2>
     </div>
   )
 }
