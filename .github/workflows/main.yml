@@ -57,6 +57,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifact
+          path: build
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -68,11 +69,11 @@ jobs:
           role-session-name: GitHubActions
 
       - name: Deploy to S3
-        working-directory: build-artifact
+        working-directory: build
         run: aws s3 sync . s3://i-dont-know-aws
 
       - name: Create Cloudfront Invalidation
+        working-directory: build
         run: |
           DISTRIBUTION_ID=${{ secrets.CF_DISTRIBUTION_ID }}
           aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths /*
-        working-directory: build-artifact
