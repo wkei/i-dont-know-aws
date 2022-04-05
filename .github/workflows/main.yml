@@ -10,6 +10,9 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  BUILD_DIR: build
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -42,8 +45,8 @@ jobs:
       - name: Share Artifact Insdie Workflow
         uses: actions/upload-artifact@v3
         with:
-          name: build-artifact
-          path: build
+          name: $BUILD_DIR
+          path: $BUILD_DIR
 
   deploy:
     runs-on: ubuntu-latest
@@ -56,22 +59,20 @@ jobs:
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
-          name: build-artifact
-          path: build
+          name: $BUILD_DIR
+          path: $BUILD_DIR
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: ${{ secrets.AWS_REGION }}
-          # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           role-to-assume: ${{ secrets.AWS_ROLE }}
           role-session-name: GitHubActions
 
       - name: Deploy to S3
-        working-directory: build
-        run: aws s3 sync . ${{ secrets.AWS_S3_BUCKET_NAME }}
+        working-directory: $BUILD_DIR
+        run: aws s3 sync . ${{ secrets.AWS_S3_BUCKET_NAME }} --delete
 
       - name: Create Cloudfront Invalidation
-        working-directory: build
+        working-directory: $BUILD_DIR
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} --paths "/*"

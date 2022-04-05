@@ -15,8 +15,6 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "client-s3-deploy": "aws s3 sync build/ s3://i-dont-know-aws --profile keidontknowaws",
-    "clean": "aws cloudfront create-invalidation --distribution-id EIOG8ZOB8IV9N --paths '/*' --profile keidontknowaws",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
