@@ -70,7 +70,7 @@ jobs:
 
       - name: Deploy to S3
         working-directory: build
-        run: aws s3 sync . s3://i-dont-know-aws
+        run: aws s3 sync . ${{ AWS_S3_BUCKET_NAME }}
 
       - name: Create Cloudfront Invalidation
         working-directory: build
