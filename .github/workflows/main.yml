@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -38,7 +38,7 @@ jobs:
 
       - name: Yarn Build
         run: yarn build
-      
+
       - name: Share Artifact Insdie Workflow
         uses: actions/upload-artifact@v3
         with:
@@ -51,29 +51,28 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    
+
     steps:
       - name: Download Artifact
         uses: actions/download-artifact@v3
         with:
           name: build-artifact
-      
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: ${{ secrets.AWS_REGION }}
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-#           role-to-assume: ${{ secrets.AWS_ROLE }}
+          #           role-to-assume: ${{ secrets.AWS_ROLE }}
           role-session-name: GitHubActions
-      
+
       - name: Deploy to S3
         working-directory: build-artifact
         run: aws s3 sync . s3://i-dont-know-aws
 
-       - name: Create Cloudfront Invalidation
+      - name: Create Cloudfront Invalidation
         run: |
           DISTRIBUTION_ID=${{ CF_DISTRIBUTION_ID }}
           aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths /*
         working-directory: build-artifact
-
