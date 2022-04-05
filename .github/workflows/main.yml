@@ -65,7 +65,5 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE }}
       
       - name: Deploy to S3
-        run: |
-          S3_BUCKET=${{ secrets.AWS_S3_BUCKET_NAME }}
-          aws s3 sync . $S3_BUCKET --acl private
+        run: aws s3 sync . ${{ secrets.AWS_S3_BUCKET_NAME }}
         working-directory: build-artifact
