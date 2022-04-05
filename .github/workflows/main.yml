@@ -57,13 +57,15 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifact
+          path: build
       
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-region: ${{ secrets.AWS_REGION }}
           role-to-assume: ${{ secrets.AWS_ROLE }}
+          role-session-name: GitHubActions
       
       - name: Deploy to S3
-        run: aws s3 sync . ${{ secrets.AWS_S3_BUCKET_NAME }}
-        working-directory: build-artifact
+        run: aws s3 sync ./build ${{ secrets.AWS_S3_BUCKET_NAME }}
+#         working-directory: build-artifact
