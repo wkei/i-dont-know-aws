@@ -11,4 +11,4 @@ https://i-dont-know-aws.keiw.xyz/
 - Requesting a Public Certificate 
 - Create CNAME Point to CloudFront in Domain DNS Manager
 
-TODO
+WIP: https://github.com/wkei/i-dont-know-aws/tree/start-from-scratch
