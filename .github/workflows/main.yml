@@ -71,7 +71,7 @@ jobs:
 
       - name: Deploy to S3
         working-directory: ${{ env.BUILD_DIR }}
-        run: aws s3 sync dist i-dont-know-aws-v2
+        run: aws s3 sync . ${{ secrets.AWS_S3_BUCKET_NAME }} --delete
 
       - name: Create Cloudfront Invalidation
         working-directory: ${{ env.BUILD_DIR }}

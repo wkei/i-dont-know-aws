@@ -150,8 +150,8 @@ Set environment variables in `https://github.com/<username>/<repo>/settings/secr
 | ------------------ | ----------------------------------------- |
 | AWS_REGION         | `us-west-2` (any region you set)          |
 | AWS_ROLE           | `arn:aws:iam::<user-id>:role/<role-name>` |
-| AWS_S3_BUCKET_NAME | `i-dont-know-aws`                         |
-| CF_DISTRIBUTION_ID | `<distribution>`                          |
+| AWS_S3_BUCKET_NAME | `arn:aws:s3:::<bucket-name>`              |
+| CF_DISTRIBUTION_ID | `<distribution-id>`                       |
 
 ## Trigger Action
 
