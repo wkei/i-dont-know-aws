@@ -144,7 +144,7 @@ touch .github/workflows/main.yml
 # ./github/workflows/main.yml
 ```
 
-Set environment variables in https://github.com/<username>/<repo>/settings/secrets/actions
+Set environment variables in `https://github.com/<username>/<repo>/settings/secrets/actions`
 
 | Name               | Value                                     |
 | ------------------ | ----------------------------------------- |

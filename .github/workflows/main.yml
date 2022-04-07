@@ -36,11 +36,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Yarn Install
-        run: yarn install
+      - name: Install
+        run: npm install
 
-      - name: Yarn Build
-        run: yarn build
+      - name: Build
+        run: npm run build
 
       - name: Share Artifact Insdie Workflow
         uses: actions/upload-artifact@v3

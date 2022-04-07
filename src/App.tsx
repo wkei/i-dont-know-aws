@@ -1,5 +1,5 @@
-import * as React from "react";
-import { Routes, Route, Outlet, Link } from "react-router-dom";
+import * as React from 'react'
+import { Routes, Route, Outlet, Link } from 'react-router-dom'
 
 export default function App() {
   return (
@@ -8,7 +8,7 @@ export default function App() {
 
       <p>
         This example demonstrates some of the core features of React Router
-        including nested <code>&lt;Route&gt;</code>s,{" "}
+        including nested <code>&lt;Route&gt;</code>s,{' '}
         <code>&lt;Outlet&gt;</code>s, <code>&lt;Link&gt;</code>s, and using a
         "*" route (aka "splat route") to render a "not found" page when someone
         visits an unrecognized URL.
@@ -30,7 +30,7 @@ export default function App() {
         </Route>
       </Routes>
     </div>
-  );
+  )
 }
 
 function Layout() {
@@ -61,8 +61,13 @@ function Layout() {
           so you can think about this <Outlet> as a placeholder for
           the child routes we defined above. */}
       <Outlet />
+
+      <hr />
+      <footer>
+        <pre>Build time: __BUILD_TIME__</pre>
+      </footer>
     </div>
-  );
+  )
 }
 
 function Home() {
@@ -70,7 +75,7 @@ function Home() {
     <div>
       <h2>Home</h2>
     </div>
-  );
+  )
 }
 
 function About() {
@@ -78,7 +83,7 @@ function About() {
     <div>
       <h2>About</h2>
     </div>
-  );
+  )
 }
 
 function Dashboard() {
@@ -86,7 +91,7 @@ function Dashboard() {
     <div>
       <h2>Dashboard</h2>
     </div>
-  );
+  )
 }
 
 function NoMatch() {
@@ -97,5 +102,5 @@ function NoMatch() {
         <Link to="/">Go to the home page</Link>
       </p>
     </div>
-  );
+  )
 }
