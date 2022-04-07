@@ -144,7 +144,7 @@ touch .github/workflows/main.yml
 # ./github/workflows/main.yml
 ```
 
-Set environment variables in https://github.com/<username>/<repo>/settings/secrets/actions
+Set environment variables in `https://github.com/<username>/<repo>/settings/secrets/actions`
 
 | Name               | Value                                     |
 | ------------------ | ----------------------------------------- |
@@ -154,3 +154,5 @@ Set environment variables in https://github.com/<username>/<repo>/settings/secre
 | CF_DISTRIBUTION_ID | `<distribution>`                          |
 
 ## Trigger Action
+
+TODO...

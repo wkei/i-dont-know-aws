@@ -36,11 +36,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Yarn Install
-        run: yarn install
+      - name: Install
+        run: npm install
 
-      - name: Yarn Build
-        run: yarn build
+      - name: Build
+        run: npm run build
 
       - name: Share Artifact Insdie Workflow
         uses: actions/upload-artifact@v3
@@ -71,7 +71,7 @@ jobs:
 
       - name: Deploy to S3
         working-directory: ${{ env.BUILD_DIR }}
-        run: aws s3 sync . ${{ secrets.AWS_S3_BUCKET_NAME }} --delete
+        run: aws s3 sync . i-dont-know-aws-v2 --delete
 
       - name: Create Cloudfront Invalidation
         working-directory: ${{ env.BUILD_DIR }}
